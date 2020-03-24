@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zhuowan Li</title>
+    <link>https://lizw14.github.io/</link>
+      <atom:link href="https://lizw14.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <description>Zhuowan Li</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 23 Mar 2020 18:22:34 -0400</lastBuildDate>
+    <image>
+      <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
+      <title>Zhuowan Li</title>
+      <link>https://lizw14.github.io/</link>
+    </image>
+    
+    <item>
+      <title>Context-Aware Group Captioning via Self-Attention and Contrastive Features</title>
+      <link>https://lizw14.github.io/project/groupcap/</link>
+      <pubDate>Mon, 23 Mar 2020 18:22:34 -0400</pubDate>
+      <guid>https://lizw14.github.io/project/groupcap/</guid>
+      <description>
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-p-styletext-align-justify-context-ware-group-captioning-given-a-group-of-target-images-shown-in-orange-boxes-and-a-group-of-reference-images-which-provide-the-context-bwomanb-the-goal-is-to-generatea-language-description-bwoman-with-cowboy-hatb-that-best-describes-the-target-group-while-taking-into-account-the-context-depicted-by-the-reference-group-p&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://lizw14.github.io/project/groupcap/featured_hu842a2d1847dc7d465a6323f01bc8e677_2345686_2000x2000_fit_q90_lanczos.jpg&#34; data-caption=&#34; Context-ware group captioning. Given a group of target images (shown in orange boxes) and a group of reference images which provide the context (woman), the goal is to generatea language description (woman with cowboy hat) that best describes the target group while taking into account the context depicted by the reference group.&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://lizw14.github.io/project/groupcap/featured_hu842a2d1847dc7d465a6323f01bc8e677_2345686_2000x2000_fit_q90_lanczos.jpg&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2550&#34; height=&#34;1741&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    &lt;p style=&#39;text-align: justify;&#39;&gt; Context-ware group captioning. Given a group of target images (shown in orange boxes) and a group of reference images which provide the context (&lt;b&gt;woman&lt;/b&gt;), the goal is to generatea language description (&lt;b&gt;woman with cowboy hat&lt;/b&gt;) that best describes the target group while taking into account the context depicted by the reference group.
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;abstract&#34;&gt;Abstract&lt;/h2&gt;
+&lt;p&gt;While image captioning has progressed rapidly, existing works focus mainly on describing single images. In this paper, we introduce a new task, context-aware group captioning, which aims to describe a group of target images in the context of another group of related reference images. Context-aware group captioning requires not only summarizing information from both the target and reference image group but also contrasting between them. To solve this problem, we propose a framework combining self-attention mechanism with contrastive feature construction to effectively summarize common information from each image group while capturing discriminative information between them. To build the dataset for this task, we propose to group the images and generate the group captions based on single image captions using scene graphs matching. Our datasets are constructed on top of the public Conceptual Captions dataset and our new Stock Captions dataset. Experiments on the two datasets show the effectiveness of our method on this new task.&lt;/p&gt;
+&lt;h2 id=&#34;datasets&#34;&gt;Datasets&lt;/h2&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-table-statistics-of-conceptual-captions-and-stock-captions&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://lizw14.github.io/project/groupcap/dataset_hu9788292a39b0f37a4d1576694de43eb2_44113_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Table: Statistics of Conceptual Captions and Stock Captions&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://lizw14.github.io/project/groupcap/dataset_hu9788292a39b0f37a4d1576694de43eb2_44113_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;456&#34; height=&#34;349&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Table: Statistics of Conceptual Captions and Stock Captions
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Conceptual Captions Dataset
+&lt;ul&gt;
+&lt;li&gt;Coming up soon.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Stock Captions Dataset
+&lt;ul&gt;
+&lt;li&gt;Coming up soon.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
+&lt;p&gt;Code in Pytorch coming up soon&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Context-Aware Group Captioning via Self-Attention and Contrastive Features</title>
+      <link>https://lizw14.github.io/publication/groupcap/</link>
+      <pubDate>Tue, 11 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>https://lizw14.github.io/publication/groupcap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>FD-GAN: Pose-guided Feature Distilling GAN for Robust Person Re-identification</title>
+      <link>https://lizw14.github.io/publication/fdgan/</link>
+      <pubDate>Sat, 08 Dec 2018 00:00:00 +0000</pubDate>
+      <guid>https://lizw14.github.io/publication/fdgan/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
