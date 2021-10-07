@@ -5,12 +5,28 @@
     <link>https://lizw14.github.io/authors/alan-yuille/</link>
       <atom:link href="https://lizw14.github.io/authors/alan-yuille/index.xml" rel="self" type="application/rss+xml" />
     <description>Alan Yuille</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 23 Mar 2020 18:22:34 -0400</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 07 Oct 2021 17:26:40 -0400</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>Alan Yuille</title>
       <link>https://lizw14.github.io/authors/alan-yuille/</link>
     </image>
+    
+    <item>
+      <title>Calibrating Concepts and Operations: Towards Symbolic Reasoning  on  Real Images</title>
+      <link>https://lizw14.github.io/project/ccosr/</link>
+      <pubDate>Thu, 07 Oct 2021 17:26:40 -0400</pubDate>
+      <guid>https://lizw14.github.io/project/ccosr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Calibrating Concepts and Operations: Towards Symbolic Reasoning  on  Real Images</title>
+      <link>https://lizw14.github.io/publication/ccosr/</link>
+      <pubDate>Thu, 30 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>https://lizw14.github.io/publication/ccosr/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Context-Aware Group Captioning via Self-Attention and Contrastive Features</title>
