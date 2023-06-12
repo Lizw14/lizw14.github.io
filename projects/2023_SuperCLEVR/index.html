@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html><head lang="en"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Super-CLEVR</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <meta property="og:image" content="https://dorverbin.github.io/refnerf/img/refnerf_titlecard.jpg">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dorverbin.github.io/refnerf">
+    <meta property="og:title" content="Ref-NeRF: Structured View-Dependent Appearance for Neural Radiance Fields">
+    <meta property="og:description" content="Neural Radiance Fields (NeRF) is a popular view synthesis technique that represents a scene as a continuous volumetric function, parameterized by multilayer perceptrons that provide the volume density and view-dependent emitted radiance at each location. While NeRF-based techniques excel at representing fine geometric structures with smoothly varying view-dependent appearance, they often fail to accurately capture and reproduce the appearance of glossy surfaces. We address this limitation by introducing Ref-NeRF, which replaces NeRF's parameterization of view-dependent outgoing radiance with a representation of reflected radiance and structures this function using a collection of spatially-varying scene properties. We show that together with a regularizer on normal vectors, our model significantly improves the realism and accuracy of specular reflections. Furthermore, we show that our model's internal representation of outgoing radiance is interpretable and useful for scene editing."> -->
+
+    <!-- <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ref-NeRF: Structured View-Dependent Appearance for Neural Radiance Fields">
+    <meta name="twitter:description" content="Neural Radiance Fields (NeRF) is a popular view synthesis technique that represents a scene as a continuous volumetric function, parameterized by multilayer perceptrons that provide the volume density and view-dependent emitted radiance at each location. While NeRF-based techniques excel at representing fine geometric structures with smoothly varying view-dependent appearance, they often fail to accurately capture and reproduce the appearance of glossy surfaces. We address this limitation by introducing Ref-NeRF, which replaces NeRF's parameterization of view-dependent outgoing radiance with a representation of reflected radiance and structures this function using a collection of spatially-varying scene properties. We show that together with a regularizer on normal vectors, our model significantly improves the realism and accuracy of specular reflections. Furthermore, we show that our model's internal representation of outgoing radiance is interpretable and useful for scene editing.">
+    <meta name="twitter:image" content="https://dorverbin.github.io/refnerf/img/refnerf_titlecard.jpg"> -->
+
+    <!-- mirror: F0%9F%AA%9E&lt -->
+    <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;%E2%9C%A8&lt;/text&gt;&lt;/svg&gt;">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/codemirror.min.js"></script>
+    <script src="js/clipboard.min.js"></script>
+    <script src="js/video_comparison.js"></script>
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="header" style="text-align: center; margin: auto; padding-top: 20px;">
+        <div class="row" id="title-row" style="max-width: 100%; margin: 0 auto; display: inline-block">
+            <h2 class="col-md-12 text-center" id="title">
+                Super-CLEVR: A Virtual Benchmark to Diagnose<br />
+                Domain Robustness in Visual Reasoning
+            </h2>
+        </div>
+        <div class="row" id="author-row" style="margin:0 auto;">
+            <div class="col-md-12 text-center" style="display: table; margin:0 auto">
+                <table class="author-table" id="author-table">
+                    <tr>
+                        <td style="padding: 3px 15px;">
+                            <a style="text-decoration:none" href="https://lizw14.github.io">
+                                Zhuowan Li
+                            </a>
+                        </td>
+                        <td style="padding: 3px 15px;">
+                            <a style="text-decoration:none" href="https://xingruiwang.github.io">
+                                Xingrui Wang
+                            </a>
+                        </td>
+                        <td style="padding: 3px 15px;">
+                            <a style="text-decoration:none" href="https://esteng.github.io">
+                                Elias Stengel-Eskin
+                            </a>
+                        </td>
+                        <td style="padding: 3px 15px;">
+                            <a style="text-decoration:none" href="https://adamkortylewski.com">
+                                Adam Kortylewski
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                <table class="author-table" id="author-table">
+                    <tr>
+                        <td style="padding: 3px 15px;">
+                            <a style="text-decoration:none" href="https://wufeim.github.io">
+                                Wufei Ma
+                            </a>
+                        </td>
+                        <td style="padding: 3px 15px;">
+                            <a style="text-decoration:none" href="https://www.cs.jhu.edu/~vandurme/">
+                                Benjamin Van Durme
+                            </a>
+                        </td>
+                        <td style="padding: 3px 15px;">
+                            <a style="text-decoration:none" href="https://www.cs.jhu.edu/~ayuille/">
+                                Alan Yuille
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                <p style="padding-top: 10px;">
+                    Johns Hopkins University
+                </p>
+                <p style="color: gray;">
+                    CVPR 2023 (Highlight, top 2.5%)
+                </p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('author-row').style.maxWidth = document.getElementById("title-row").clientWidth + 'px';
+    </script>
+    <div class="container" id="main">
+        <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <a href="https://arxiv.org/abs/2112.03907">
+                            <img src="./img/paper.png" height="60px">
+                                <h4><strong>Paper</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/watch?v=DWRp_70ypiA">
+                            <img src="./img/youtube_icon.png" height="60px">
+                                <h4><strong>Video</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://storage.googleapis.com/gresearch/refraw360/ref.zip" target="_blank">
+                            <image src="img/database_icon.png" height="60px">
+                                <h4><strong>Dataset</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/Lizw14/Super-CLEVR" target="_blank">
+                            <image src="img/github.png" height="60px">
+                                <h4><strong>Code</strong></h4>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+
+    <div class="container" style="max-width: 1100px; padding-bottom: 60px;">
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 h3-sec">
+                <h3>
+                    Abstract
+                </h3>
+                <p class="text-justify">
+                    Visual Question Answering (VQA) models often perform poorly on out-of-distribution data and struggle on domain generalization. Due to the multi-modal nature of this task, multiple factors of variation are intertwined, making generalization difficult to analyze. This motivates us to introduce a virtual benchmark, Super-CLEVR, where different factors in VQA domain shifts can be isolated in order that their effects can be studied independently. Four factors are considered: visual complexity, question redundancy, concept distribution and concept compositionality. With controllably generated data, Super-CLEVR enables us to test VQA methods in situations where the test data differs from the training data along each of these axes. We study four existing methods, including two neural symbolic methods NSCL and NSVQA, and two non-symbolic methods FiLM and mDETR; and our proposed method, probabilistic NSVQA (P-NSVQA), which extends NSVQA with uncertainty reasoning. P-NSVQA outperforms other methods on three of the four domain shift factors. Our results suggest that disentangling reasoning and perception, combined with probabilistic uncertainty, form a strong VQA model that is more robust to domain shifts.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 h3-sec">
+                <h3>
+                    Dataset
+                </h3>
+                <p class="text-justify">
+                    Super-CLEVR contains 30k images of vehicles (from <a href="https://qliu24.github.io/udapart/">UDA-Part</a>) randomly placed in the scenes, with 10 question-answer pairs for each image. The vehicles have part annotations and so the objects in the images can have distinct part attributes.
+                </p>
+                <image src="img/teaser.png" class="img-responsive" width="100%" style="max-height: 450px; margin: 15px auto 15px auto;"></image>
+
+                <p class="text-justify">
+                    The first 20k images and paired are used for training, the next 5k for validation and the last 5k for testing.
+                </p>
+                <table id="download-links" style="margin-left: auto; margin-right: auto; padding: 10px;">
+                    <tr>
+                        <th class="first-row">Data</th>
+                        <th class="first-row">Download Link</th>
+                    </tr>
+                    <tr>
+                        <td class="mid-row">images</th>
+                        <td class="mid-row"><a href="https://www.cs.jhu.edu/~zhuowan/zhuowan/SuperCLEVR/to_be_released/images.zip">images.zip</a></th>
+                    </tr>
+                    <tr>
+                        <td class="mid-row">scenes</th>
+                        <td class="mid-row"><a href="https://www.cs.jhu.edu/~zhuowan/zhuowan/SuperCLEVR/to_be_released/superCLEVR_scenes.json">superCLEVR_scenes.json</a></th>
+                    </tr>
+                    <tr>
+                        <td class="mid-row">questions</th>
+                        <td class="mid-row"><a href="https://www.cs.jhu.edu/~zhuowan/zhuowan/SuperCLEVR/to_be_released/superCLEVR_questions_30k.json">superCLEVR_questions_30k.json</a></th>
+                    </tr>
+                    <tr>
+                        <td class="mid-row">questions (- redundancy)</th>
+                        <td class="mid-row"><a href="https://www.cs.jhu.edu/~zhuowan/zhuowan/SuperCLEVR/to_be_released/superCLEVR_questions_30k_NoRedundant.json">superCLEVR_questions_30k_NoRedundant.json</a></th>
+                    </tr>
+                    <tr>
+                        <td class="last-row">questions (+ redundancy)</th>
+                        <td class="last-row"><a href="https://www.cs.jhu.edu/~zhuowan/zhuowan/SuperCLEVR/to_be_released/superCLEVR_questions_30k_AllRedundant.json">superCLEVR_questions_30k_AllRedundant.json</a></th>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Citation
+                </h3>
+                <div class="form-group col-md-30 col-md-offset-0">
+                    <textarea id="bibtex" class="form-control" readonly>
+@inproceedings{li2023super,
+    title={Super-CLEVR: A Virtual Benchmark to Diagnose Domain Robustness in Visual Reasoning},
+    author={Li, Zhuowan and Wang, Xingrui and Stengel-Eskin, Elias and Kortylewski, Adam and Ma, Wufei and Van Durme, Benjamin and Yuille, Alan L},
+    booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+    pages={14963--14973},
+    year={2023}
+}</textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 h3-sec">
+            <h3>
+                Objects and Parts
+            </h3>
+            <table>
+                <tr>
+                  <td><img src="./gifs/0.gif" /> </td>
+                  <td><img src="./gifs/1.gif" /> </td>
+                  <td><img src="./gifs/2.gif" /> </td>
+                  <td><img src="./gifs/3.gif" /> </td>
+                </tr>
+                <tr>
+                  <td> (No-1) airliner<p>left door, front wheel, fin, right engine, propeller, back left wheel, left engine, back right wheel, left tailplane, right door, right tailplane, right wing, left wing</p> </td>
+                  <td> (No-2) biplane<p>front wheel, fin, propeller, left tailplane, right tailplane, right wing, left wing</p> </td>
+                  <td> (No-3) jet<p>left door, front wheel, fin, right engine, propeller, back left wheel, left engine, back right wheel, left tailplane, right tailplane, right wing, left wing</p> </td>
+                  <td> (No-4) fighter<p>fin, right engine, left engine, left tailplane, right tailplane, right wing, left wing</p> </td>
+                </tr>
+                <tr>
+                  <td><img src="./gifs/4.gif" /> </td>
+                  <td><img src="./gifs/5.gif" /> </td>
+                  <td><img src="./gifs/6.gif" /> </td>
+                  <td><img src="./gifs/7.gif" /> </td>
+                </tr>
+                <tr>
+                  <td> (No-5) utility bike<p>left handle, brake system, front wheel, left pedal, right handle, back wheel, saddle, carrier, fork, right crank arm, front fender, drive chain, back fender, left crank arm, side stand, right pedal</p> </td>
+                  <td> (No-6) tandem bike<p>rearlight, front wheel, back wheel, fork, front fender, back fender</p> </td>
+                  <td> (No-7) road bike<p>left handle, brake system, front wheel, left pedal, right handle, back wheel, saddle, fork, right crank arm, drive chain, left crank arm, right pedal</p> </td>
+                  <td> (No-8) mountain bike<p>left handle, brake system, front wheel, left pedal, right handle, back wheel, saddle, fork, right crank arm, drive chain, left crank arm, right pedal</p> </td>
+                </tr>
+                <tr>
+                  <td><img src="./gifs/8.gif" /> </td>
+                  <td><img src="./gifs/9.gif" /> </td>
+                  <td><img src="./gifs/10.gif" /> </td>
+                  <td><img src="./gifs/11.gif" /> </td>
+                </tr>
+                <tr>
+                  <td> (No-9) articulated bus<p>left tail light, front license plate, front right door, back bumper, right head light, front left wheel, left mirror, right tail light, back right door, back left wheel, back right wheel, back license plate, front right wheel, left head light, right mirror, trunk, mid right door, roof</p> </td>
+                  <td> (No-10) double bus<p>left tail light, front license plate, front right door, front bumper, back bumper, right head light, front left wheel, left mirror, right tail light, back left wheel, back right wheel, back license plate, mid left door, front left door, front right wheel, left head light, right mirror, trunk, mid right door, roof</p> </td>
+                  <td> (No-11) regular bus<p>left tail light, front license plate, front right door, front bumper, back bumper, right head light, front left wheel, left mirror, right tail light, back right door, back left wheel, back right wheel, back license plate, front right wheel, left head light, right mirror, trunk, mid right door, roof</p> </td>
+                  <td> (No-12) school bus<p>left tail light, front license plate, front right door, front bumper, back bumper, right head light, front left wheel, left mirror, right tail light, back left wheel, back right wheel, back license plate, mid left door, front right wheel, left head light, right mirror, roof</p> </td>
+                </tr>
+                <tr>
+                  <td><img src="./gifs/12.gif" /> </td>
+                  <td><img src="./gifs/13.gif" /> </td>
+                  <td><img src="./gifs/14.gif" /> </td>
+                  <td><img src="./gifs/15.gif" /> </td>
+                </tr>
+                <tr>
+                  <td> (No-13) truck<p>front left door, left tail light, left head light, back right wheel, right head light, front bumper, right mirror, front license plate, front right wheel, back bumper, left mirror, back left wheel, right tail light, hood, trunk, front left wheel, roof, front right door</p> </td>
+                  <td> (No-14) suv<p>front left door, left tail light, left head light, back left door, back right wheel, right head light, front bumper, right mirror, front right wheel, back bumper, left mirror, back left wheel, right tail light, hood, trunk, front left wheel, back right door, roof, front right door</p> </td>
+                  <td> (No-15) minivan<p>front left door, left tail light, left head light, back left door, back right wheel, right head light, front bumper, right mirror, front license plate, front right wheel, back bumper, left mirror, back left wheel, right tail light, hood, trunk, front left wheel, back right door, roof, front right door, back license plate</p> </td>
+                  <td> (No-16) sedan<p>front left door, left tail light, left head light, back left door, back right wheel, right head light, front bumper, right mirror, front license plate, front right wheel, back bumper, left mirror, back left wheel, right tail light, hood, trunk, front left wheel, back right door, roof, front right door, back license plate</p> </td>
+                </tr>
+                <tr>
+                  <td><img src="./gifs/16.gif" /> </td>
+                  <td><img src="./gifs/17.gif" /> </td>
+                  <td><img src="./gifs/18.gif" /> </td>
+                  <td><img src="./gifs/19.gif" /> </td>
+                </tr>
+                <tr>
+                  <td> (No-17) wagon<p>front left door, left tail light, left head light, back left door, back right wheel, right head light, front bumper, right mirror, front license plate, front right wheel, back bumper, left mirror, back left wheel, right tail light, hood, trunk, front left wheel, back right door, roof, front right door, back license plate</p> </td>
+                  <td> (No-18) chopper<p>left handle, center headlight, front wheel, right handle, back wheel, center taillight, left mirror, gas tank, front fender, fork, drive chain, left footrest, right mirror, windscreen, engine, back fender, right exhaust, seat, panel, right footrest</p> </td>
+                  <td> (No-19) scooter<p>left handle, center headlight, front wheel, right handle, back cover, back wheel, center taillight, left mirror, front cover, fork, drive chain, right mirror, engine, left exhaust, back fender, seat, panel</p> </td>
+                  <td> (No-20) cruiser<p>left handle, center headlight, right headlight, right taillight, front wheel, right handle, back cover, back wheel, left taillight, left mirror, left headlight, gas tank, front cover, front fender, fork, drive chain, left footrest, license plate, right mirror, windscreen, left exhaust, back fender, right exhaust, seat, panel, right footrest</p> </td>
+                </tr>
+                <tr>
+                  <td><img src="./gifs/20.gif" /> </td>
+                </tr>
+                <tr>
+                  <td> (No-21) dirtbike<p>left handle, front wheel, right handle, back cover, back wheel, gas tank, front cover, front fender, fork, drive chain, left footrest, engine, right exhaust, seat, panel, right footrest</p> </td>
+                </tr>
+
+              </table>
+            </div>
+        </div>
+
+        </div>
+
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</body></html>
