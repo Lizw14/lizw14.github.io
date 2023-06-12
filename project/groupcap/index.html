@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html><head lang="en"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Super-CLEVR</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <meta property="og:image" content="https://dorverbin.github.io/refnerf/img/refnerf_titlecard.jpg">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dorverbin.github.io/refnerf">
+    <meta property="og:title" content="Ref-NeRF: Structured View-Dependent Appearance for Neural Radiance Fields">
+    <meta property="og:description" content="Neural Radiance Fields (NeRF) is a popular view synthesis technique that represents a scene as a continuous volumetric function, parameterized by multilayer perceptrons that provide the volume density and view-dependent emitted radiance at each location. While NeRF-based techniques excel at representing fine geometric structures with smoothly varying view-dependent appearance, they often fail to accurately capture and reproduce the appearance of glossy surfaces. We address this limitation by introducing Ref-NeRF, which replaces NeRF's parameterization of view-dependent outgoing radiance with a representation of reflected radiance and structures this function using a collection of spatially-varying scene properties. We show that together with a regularizer on normal vectors, our model significantly improves the realism and accuracy of specular reflections. Furthermore, we show that our model's internal representation of outgoing radiance is interpretable and useful for scene editing."> -->
+
+    <!-- <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ref-NeRF: Structured View-Dependent Appearance for Neural Radiance Fields">
+    <meta name="twitter:description" content="Neural Radiance Fields (NeRF) is a popular view synthesis technique that represents a scene as a continuous volumetric function, parameterized by multilayer perceptrons that provide the volume density and view-dependent emitted radiance at each location. While NeRF-based techniques excel at representing fine geometric structures with smoothly varying view-dependent appearance, they often fail to accurately capture and reproduce the appearance of glossy surfaces. We address this limitation by introducing Ref-NeRF, which replaces NeRF's parameterization of view-dependent outgoing radiance with a representation of reflected radiance and structures this function using a collection of spatially-varying scene properties. We show that together with a regularizer on normal vectors, our model significantly improves the realism and accuracy of specular reflections. Furthermore, we show that our model's internal representation of outgoing radiance is interpretable and useful for scene editing.">
+    <meta name="twitter:image" content="https://dorverbin.github.io/refnerf/img/refnerf_titlecard.jpg"> -->
+
+    <!-- mirror: F0%9F%AA%9E&lt -->
+    <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;%E2%9C%A8&lt;/text&gt;&lt;/svg&gt;">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/codemirror.min.js"></script>
+    <script src="js/clipboard.min.js"></script>
+    <script src="js/video_comparison.js"></script>
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="header" style="text-align: center; margin: auto; padding-top: 20px;">
+        <div class="row" id="title-row" style="max-width: 100%; margin: 0 auto; display: inline-block">
+            <h2 class="col-md-12 text-center" id="title">
+                Context-Aware Group Captioning <br />via Self-Attention and Contrastive Features
+            </h2>
+        </div>
+        <div class="row" id="author-row" style="margin:0 auto;">
+            <div class="col-md-12 text-center" style="display: table; margin:0 auto">
+                <table class="author-table" id="author-table">
+                    <tr>
+                        <td style="padding: 3px 15px;">
+                            <a style="text-decoration:none" href="https://lizw14.github.io">
+                                Zhuowan Li
+                            </a>
+                        </td>
+                        <td style="padding: 3px 15px;">
+                            <a style="text-decoration:none" href="https://scholar.google.com/citations?user=ehs5ImcAAAAJ&hl=en">
+                                Quan Tran
+                            </a>
+                        </td>
+                        <td style="padding: 3px 15px;">
+                            <a style="text-decoration:none" href="https://mai-t-long.com">
+                                Long Mai
+                            </a>
+                        </td>
+                        <td style="padding: 3px 15px;">
+                            <a style="text-decoration:none" href="https://scholar.google.com/citations?user=R0bnqaAAAAAJ&hl=en">
+                                Zhe Lin
+                            </a>
+                        </td>
+                        <td style="padding: 3px 15px;">
+                            <a style="text-decoration:none" href="https://www.cs.jhu.edu/~ayuille/">
+                                Alan Yuille
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                <p style="padding-top: 10px;">
+                    Johns Hopkins University, Adobe Research
+                </p>
+                <p style="color: gray;">
+                    CVPR 2020
+                </p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('author-row').style.maxWidth = document.getElementById("title-row").clientWidth + 'px';
+    </script>
+    <div class="container" id="main">
+        <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <a href="https://arxiv.org/pdf/2004.03708.pdf">
+                            <img src="./img/paper.png" height="60px">
+                                <h4><strong>Paper</strong></h4>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+
+    <div class="container" style="max-width: 1100px; padding-bottom: 60px;">
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 h3-sec">
+                <h3>
+                    Abstract
+                </h3>
+                <p class="text-justify">
+                    While image captioning has progressed rapidly, existing works focus mainly on describing single images. In this paper, we introduce a new task, context-aware group captioning, which aims to describe a group of target images in the context of another group of related reference images. Context-aware group captioning requires not only summarizing information from both the target and reference image group but also contrasting between them. To solve this problem, we propose a framework combining self-attention mechanism with contrastive feature construction to effectively summarize common information from each image group while capturing discriminative information between them. To build the dataset for this task, we propose to group the images and generate the group captions based on single image captions using scene graphs matching. Our datasets are constructed on top of the public Conceptual Captions dataset and our new Stock Captions dataset. Experiments on the two datasets show the effectiveness of our method on this new task.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 h3-sec">
+                <h3>
+                    Dataset
+                </h3>
+                <image src="img/5035-teaser.gif" class="img-responsive" width="70%" style="max-height: 450px; margin: 15px auto 15px auto;"></image>
+                
+
+                <p class="text-justify">
+                    Conceptual Captions Dataset: <a href="http://cs.jhu.edu/~zhuowan/ContextCap/conceptual_dataset.zip" target="_blank" rel="noopener">conceptual_dataset.zip</a></p>
+                </p>
+                <p class="text-justify">
+                    Stock Captions Dataset: To be updated.</p>
+                </p>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Citation
+                </h3>
+                <div class="form-group col-l-30 col--offset-0">
+                    <textarea id="bibtex" class="form-control" readonly>
+@inproceedings{li2020context,
+    title={Context-aware group captioning via self-attention and contrastive features},
+    author={Li, Zhuowan and Tran, Quan and Mai, Long and Lin, Zhe and Yuille, Alan L},
+    booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+    pages={3440--3450},
+    year={2020}
+}</textarea>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</body></html>
